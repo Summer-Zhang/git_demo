@@ -150,7 +150,7 @@ git 版本控制系统：
 		
 	```
 *  
-![](/Users/summer/Desktop/project/8_git分享/3136029559-576d5b0b66eac.jpeg)
+![](https://sfault-image.b0.upaiyun.com/313/602/3136029559-576d5b0b66eac_articlex)
 
 #### 团队协作
 #####团队约定：
