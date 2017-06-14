@@ -87,8 +87,32 @@ git 版本控制系统：
  ```
   	➜ git push origin master
  ```
- 
-### 四、git分支管理及团队协作
+
+### 四、git代码回滚
+*  本地代码库回滚
+
+
+```
+	➜ git reset --hard commit-id //回滚到commit-id，在commit-id之后提交的commit都去除
+	➜ git reset --hard HEAD~3 //将最近3次的提交回滚
+```
+
+*  远程代码库回滚
+
+	原理：先将本地分支退回到某个commit，删除远程分支，再重新push本地分支
+
+```
+	➜ git checkout the_branch
+	➜ git pull
+	➜ git branch the_branch_backup  //备份一下这个分支当前的情况
+	➜ git reset --hard the_commit_id //把the_branch本地回滚到the_commit_id
+	➜ git push origin :the_branch //删除远程 the_branch
+	➜ git push origin the_branch  //用回滚后的本地分支重新建立远程分支
+	➜ git branch -D  the_branch_backup  //如果前面都成功了，删除这个备份分支
+	➜ 
+```
+
+### 五、git分支管理及团队协作
 #### 分支类型
 *  master 主分支：中央仓库应该有一个、且仅有一个主分支。所有提供到生产环境的正式版本。
 *  develop 开发分支：用于日常项目开发，包含了项目最新的功能和代码，所有开发内容都在 develop 上进行。
@@ -169,7 +193,7 @@ git 版本控制系统：
 4. 如果出现conflict那么清除conflict之后，`git commit -m `.然后把本地develop `git push origin develop` 到远程的develop.
 5. 每完成一个功能就提交一次
 
-### 五、通用别名
+### 六、通用别名
 ~/.gitconfig
 
 ```
